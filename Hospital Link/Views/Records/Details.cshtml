@@ -1,0 +1,67 @@
+﻿@model Hospital_Link.Models.Record
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Record</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Diognosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Diognosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Current_Prescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Current_Prescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Previous_presciption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Previous_presciption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_of_Prescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_of_Prescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,59 @@
+﻿@model Hospital_Link.Models.ChemistView
+
+@{
+    ViewBag.Title = "search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>search</h2>
+
+<div>
+    <h4>ChemistView</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Current_Prescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Current_Prescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Previous_presciption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Previous_presciption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_of_Prescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_of_Prescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dr_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dr_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

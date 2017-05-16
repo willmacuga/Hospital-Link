@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @*Template heder files*@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/newTemplate/")css/bootstrap.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/newTemplate/")css/style.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/newTemplate/")js/bootstrap.min.js" rel="stylesheet">
+    <link href="@Url.Content("~/Content/newTemplate/")JavaScript.js" rel="stylesheet">
+    <link href="@Url.Content("~/Content/newTemplate/")js/BubbleCounter.js" rel="stylesheet">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundle/counterjs")
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <center>
+                <h1>Welcome to Hospital LynQ</h1>
+                <h3>One Click Health Care Unit.</h3>
+                <div style="margin-top:30px;">
+
+                    @*<a @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) class="btn btn-primary btn-lg" role="button">Login</a>
+                        <a @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) class="btn btn-default btn-lg" role="button">Register&nbsp;</a>*@
+                </div>
+                <div class="skroler">
+                    <a href="#about"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                </div>
+            </center>
+        </div>
+    </header>
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                @Html.ActionLink("Hospital Lynk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Service <span class="fa fa-angle-down"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Patients", "Index", "Patients")</li>
+                        <li>@Html.ActionLink("Doctors", "Index", "Doctors")</li>
+                        <li>@Html.ActionLink("Patient diognosis", "Index", "DoctorsView")</li>
+                        <li>@Html.ActionLink("Dr's Prescription", "Index", "ChemistView")</li>
+                        <li class="divider"></li>
+                        <li>Management</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Hospitals", "Index", "Hospitals")</li>
+
+
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @Html.Partial("_LoginPartial")
+                @*<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>*@
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

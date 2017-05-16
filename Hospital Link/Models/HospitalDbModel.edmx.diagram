@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b64c07b93c0e4ba79f58128dfcb030cf" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalDbModel1.BloodBank" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.ChandedRecord" Width="1.5" PointX="10.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Chemist" Width="1.5" PointX="9.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Doctor" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Hospital" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.HospitalRole" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.HospitalUser" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Log" Width="1.5" PointX="9.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Login" Width="1.5" PointX="13" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Medical_Stuff" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Medicine" Width="1.5" PointX="12" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Patient" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Record" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.RecordAtlerLog" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Regestration_date" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.ChemistView" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Doctores_More_Details" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.DoctorsView" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.HOSPITAL_INFO" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.Nursesview" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalDbModel1.View" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="HospitalDbModel1.Hospital_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_ChandedRecords_ToRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_ChangedRecord_ToHospital" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Record_ToDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Record_Topatient" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK__Login__UserID__10E07F16" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Chemist_ToMedical_Stuff" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_medicine_ToChemist" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK__HospitalU__UserI__66EA454A" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK__Log__DoctorId__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK__Login__UserID__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Doctor_ToHospital" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Hospital_ToDoctors" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Record_To_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Medical_Stuff_ToHospital" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Record_ToHospital" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK__Log__RecordId__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Record_To_patient" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Regestration_date_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.FK_Recordlog_ToRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalDbModel1.UserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

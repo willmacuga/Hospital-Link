@@ -1,0 +1,351 @@
+@import url(http://fonts.googleapis.com/css?family=Duru+Sans);
+body {
+	font-family: 'Duru Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Duru Sans', Open Sans Light;
+}
+header {
+	background:url(../img/bg-header.jpg) no-repeat;
+	height:700px;
+	width:100%;
+	padding-top:50px;
+	color: #000;
+}
+header h1 {
+	font-size: 60px;
+	margin-top: 120px;
+}
+.skroler {
+	margin-top: 80px;
+	font-size: 18px;
+	border: 1px solid #000;
+	width: 43px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border-radius: 100%;
+}
+.skroler a {
+	color: #00f;
+	text-decoration: none;
+	text-align: center;
+}
+#about {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	color: #777777;
+}
+#about .row {
+	margin-bottom: 50px;
+	text-align: center;
+}
+#about .glyphicon {
+	font-size: 32px;
+	color: #428bca;
+	margin-bottom: 10px;
+	border: 1px solid #AAA;
+	width: 80px;
+	border-radius: 100%;
+	padding-top: 22px;
+	padding-bottom: 22px;
+}
+#about h3 {
+	margin-bottom: 20px;
+}
+#about .glyphicon {
+	-webkit-transition:0.3s;
+	-moz-transition:0.3s;
+	-o-transition:0.3s;
+	transition:0.3s;
+
+}
+#about .col-md-3:hover .glyphicon {
+	border: 1px solid #428bca;
+	background: #428bca;
+	color: #fff;
+}
+#about2 {
+	padding-top: 180px;
+	padding-bottom: 50px;
+	background: #eaeaea;
+	text-align: right;
+
+	-moz-transition:0.3s;
+	-o-transition:0.3s;
+	transition:0.3s;
+}
+#about2 .glyphicon {
+	font-size: 32px;
+	color: #428bca;
+	margin-bottom: 10px;
+	border: 1px solid #AAA;
+	width: 80px;
+	border-radius: 100%;
+	padding-top: 22px;
+	padding-bottom: 22px;
+	text-align: center;
+}
+/* Big Triangle */
+svg#bigTriangleColor {
+	margin-bottom: -100px;
+	pointer-events: none;
+}
+
+#bigTriangleColor path {
+	fill: #ffffff;
+	stroke: #ffffff;
+	stroke-width: 2;
+}
+
+#portfolio {
+	background: #ffffff;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+#portfolio .col-md-4 {
+	margin-bottom: 30px;
+}
+#portfolio h4 {
+	margin-bottom: 60px;
+	padding-top: 20px;
+	color: #777777;
+}
+.thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(238, 238, 238, 0.90);
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align:center;
+    color:#777777 !important;
+    font-weight: bold;
+    z-index:2;
+}
+#about3 {
+	background: url(../img/bg-about.jpg) no-repeat;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	color: #ffffff;
+}
+#about3 .glyphicon {
+	font-size: 22px;
+	margin-bottom: 10px;
+	background-color: #333333;
+	width: 80px;
+	border-radius: 100%;
+	padding:28px;
+	text-align: center;
+}
+#about3 .row {
+	margin-bottom: 40px;
+}
+#about3 .feature {
+	padding-top: 50px;
+}
+#about3 h4 {
+	font-weight: bold;
+}
+#sponsor {
+	background: url(../img/bg-sponsor.jpg);
+	padding-top: 40px;
+	padding-bottom: 60px;
+	color: #ffffff;
+	text-align: center;
+}
+#sponsor .row {
+	margin-bottom: 40px;
+}
+#sponsor .space {
+	margin-bottom: 40px;
+}
+footer {
+	background: #333333;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	color: #ffffff;
+	font-weight: 100;
+}
+footer h4 {
+	margin-bottom: 30px;
+}
+#copyright {
+	padding-bottom: 20px;
+	padding-top: 20px;
+	background: #222222;
+	color: #ffffff;
+	text-align: center;
+}
+@media only screen and (max-width: 480px) {
+	.btn-lg {
+		margin-bottom: 10px;
+	}
+	#about .row .col-md-3 {
+		margin-bottom: 30px;
+	}
+	#about2, #about3 .btn {
+		width: 100%;
+	}
+	#about3 .img-mockup {
+		display: none;
+	}
+	#about3 {
+		text-align: center;
+	}
+}
+#nav.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:10;
+}
+
+#Img-Comment1{
+padding-top:60px;
+padding-bottom:60px;
+color:black;
+}
+.img-circle{
+width:50%;
+height:50%;
+
+}
+.col-md-6{
+
+}
+#index-Img{
+padding-top: 40px;
+padding-bottom: 40px;
+}
+#aboutbg{
+background: url(../img/nano-pharma.jpg) no-repeat;
+}
+#circle
+{
+  	width: 130px;
+	height: 130px;
+	background: lightBlue;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	border-radius: 40px;
+	float:left;
+ 	margin:10px;
+}
+.count, .counted
+{
+  line-height: 100px;
+  color:white;
+  margin-left:30px;
+  font-size:25px;
+}
+#talkbubble {
+   width: 120px;
+   height: 80px;
+   background: green;
+   position: relative;
+   -moz-border-radius:    10px;
+   -webkit-border-radius: 10px;
+   border-radius:         10px;
+   float:left;
+   margin:20px;
+}
+#talkbubble:before {
+   content:"";
+   position: absolute;
+   right: 100%;
+   top: 15px;
+   width: 0;
+   height: 0;
+   border-top: 13px solid transparent;
+   border-right: 20px solid green;
+   border-bottom: 13px solid transparent;
+}
+
+
+
+h1 {
+  font-family:'Cedarville Cursive', cursive;
+  font-weight: normal;
+  font-size: 4em;
+}
+.heart{
+    
+    position: relative;
+    width: 100px;
+    height: 90px;
+    float: left;
+text-align:justify;
+}
+.heart:before,
+.heart:after{
+    position: absolute;
+    content:"";
+  
+    left: 50px;
+    width: 50px;
+    height: 80px;
+    background: #fc2e5a;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+.heart:after{
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+
+****Pop UP***
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 2;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#textHover {
+  z-index: 3;
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  left: 150px;
+  top: 350px;
+}
+

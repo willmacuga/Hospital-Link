@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Jmelosegui.Mvc.GoogleMap
+
+
+<h2>Location</h2>
+@(
+        Html.GoogleMap()
+            .Name("map")
+            .Height(500)
+            .Markers(m => m.Add().Title("Hello World!"))
+)
+
+@section scripts
+    {
+    @(Html.GoogleMap().ScriptRegistrar())
+}
+
+

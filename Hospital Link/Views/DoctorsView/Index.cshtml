@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Hospital_Link.Models.DoctorsView>
+
+@{
+    ViewBag.Title = "Patient List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Patients</h2>
+
+<p>
+    @Html.ActionLink("Add New Patient", "Create")
+    <h2>Search Patient </h2>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+
+        <div class="text-danger">
+            @TempData["ErrorMessage"]
+    </div>
+
+    }
+
+    @using (Html.BeginForm("search", "DoctorsView", FormMethod.Get))
+    {
+        <div class="form-group">
+            <text>Search By ID  : </text><input type="text" name="id" class="form-control" />&nbsp;
+            <button type="submit" value="Search" id="btnSubmit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+        </div>
+    }
+
+
+
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medical_History)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Other)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SurName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medical_History)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Other)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })|
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>

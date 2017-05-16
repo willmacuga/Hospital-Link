@@ -1,0 +1,65 @@
+﻿@model Hospital_Link.Models.BloodBank
+@{
+    ViewBag.Title = "Requisition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Requisition Form</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="jumbotron">
+    <table>
+        <tr>
+            <td><div class="heart">group A</div></td>
+            <td><div class="heart"></div></td>
+            <td><div> <img src="~/Content/newTemplate/img/Blood/bloodno BG.jpg"  width="50"height="50"/></div></td>
+            <td><div class="heart"></div></td>
+            <td><span class="heart">lskdm</span></td>
+
+        </tr>
+        <tr>
+            <td>@ViewBag.BloodGroup_A</td>
+            <td>@ViewBag.BloodGroup_B</td>
+            <td>@ViewBag.BloodGroup_AB</td>
+            <td>@ViewBag.BloodGroup_O_Negative</td>
+            <td>@ViewBag.BloodGroup_O_Positive</td>
+
+        </tr>
+       
+            <tr>
+                <td>
+
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control     glyphicon-heart" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </td>
+
+            </tr>
+
+           
+        
+    </table>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+}

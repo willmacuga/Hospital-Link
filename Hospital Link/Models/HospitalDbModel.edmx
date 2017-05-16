@@ -1,0 +1,1702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HospitalDbModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BloodBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Blood type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Hospital Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChandedRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="Patient Diognosis" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Current Prescription" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Previous presciption" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Date of Prescription" Type="date" Nullable="false" />
+          <Property Name="Hospital_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Chemist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Latitude" Type="nchar" MaxLength="10" />
+          <Property Name="Longitude" Type="nchar" MaxLength="10" />
+          <Property Name="Attendant" Type="int" />
+          <Property Name="Clearance" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Practice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Room NO" Type="nchar" MaxLength="10" />
+          <Property Name="Contact" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="50" />
+          <Property Name="Hospital_ID" Type="int" />
+          <Property Name="USER_IDNO" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Latitude" Type="nchar" MaxLength="10" />
+          <Property Name="Longitude" Type="nchar" MaxLength="10" />
+          <Property Name="Attendant" Type="int" />
+        </EntityType>
+        <EntityType Name="HospitalRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="LogTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medical_Stuff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="50" />
+          <Property Name="Qualifications" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Hospital_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="chemistId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Contact" Type="int" Nullable="false" />
+          <Property Name="Box No" Type="varchar" MaxLength="50" />
+          <Property Name="Medical History" Type="varchar" MaxLength="50" />
+          <Property Name="Other" Type="varchar" MaxLength="100" />
+          <Property Name="Blood Type" Type="varchar" MaxLength="2" />
+          <Property Name="Insuarance Information" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="Patient Diognosis" Type="varchar" MaxLength="1000" />
+          <Property Name="Current Prescription" Type="varchar" MaxLength="1000" />
+          <Property Name="Previous presciption" Type="varchar" MaxLength="1000" />
+          <Property Name="Date of Prescription" Type="date" Nullable="false" />
+          <Property Name="Hospital_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="RecordAtlerLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Regestration date">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="Regestration date" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.ChemistView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChemistView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Patient Name" />
+            <PropertyRef Name="Current Prescription" />
+            <PropertyRef Name="Previous presciption" />
+            <PropertyRef Name="Date of Prescription" />
+            <PropertyRef Name="Dr Name" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Patient Name" Type="varchar" MaxLength="101" Nullable="false" />
+          <Property Name="Current Prescription" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Previous presciption" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Date of Prescription" Type="date" Nullable="false" />
+          <Property Name="Dr Name" Type="nvarchar" MaxLength="101" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.Doctores_More_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Doctores_More_Details">
+          <Key>
+            <PropertyRef Name="Patient ID" />
+            <PropertyRef Name="Patient name" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Patient Diognosis" />
+            <PropertyRef Name="Current Prescription" />
+            <PropertyRef Name="Previous presciption" />
+            <PropertyRef Name="Dr name" />
+          </Key>
+          <Property Name="Patient ID" Type="int" Nullable="false" />
+          <Property Name="Patient name" Type="nvarchar" MaxLength="101" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Medical History" Type="nchar" MaxLength="20" />
+          <Property Name="Other" Type="nchar" MaxLength="100" />
+          <Property Name="Patient Diognosis" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Current Prescription" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Previous presciption" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Dr name" Type="nvarchar" MaxLength="101" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.DoctorsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DoctorsView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="SurName" />
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Medical History" Type="nchar" MaxLength="20" />
+          <Property Name="Other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.HOSPITAL INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HOSPITAL INFO">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Location" />
+            <PropertyRef Name="Blood type" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Attendant" Type="int" />
+          <Property Name="Blood type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.Nursesview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Nursesview">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="SurName" />
+            <PropertyRef Name="DOB" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Contact" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Contact" Type="int" Nullable="false" />
+          <Property Name="Box No" Type="nchar" MaxLength="50" />
+          <Property Name="Medical History" Type="nchar" MaxLength="20" />
+          <Property Name="Other" Type="nchar" MaxLength="100" />
+          <Property Name="Blood Type" Type="nchar" MaxLength="2" />
+          <Property Name="Insuarance Information" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Location" />
+            <PropertyRef Name="Blood type" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Attendant" Type="int" />
+          <Property Name="Blood type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__HospitalU__UserI__66EA454A">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="HospitalUsers" Type="Self.HospitalUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HospitalUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Log__DoctorId__4AB81AF0">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Log__RecordId__49C3F6B7">
+          <End Role="Record" Type="Self.Record" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="RecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Login__UserID__10E07F16">
+          <End Role="Chemist" Type="Self.Chemist" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chemist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Login__UserID__4CA06362">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRoles__RoleI__5A846E65">
+          <End Role="HospitalRoles" Type="Self.HospitalRoles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRoles__UserI__59904A2C">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChandedRecords_ToRecord">
+          <End Role="Record" Type="Self.Record" Multiplicity="1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="RecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChangedRecord_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chemist_ToMedical_Stuff">
+          <End Role="Medical_Stuff" Type="Self.Medical_Stuff" Multiplicity="0..1" />
+          <End Role="Chemist" Type="Self.Chemist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Stuff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Chemist">
+              <PropertyRef Name="Attendant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hospital_ToDoctors">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hospital">
+              <PropertyRef Name="Attendant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Stuff_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="Medical_Stuff" Type="Self.Medical_Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medical_Stuff">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medicine_ToChemist">
+          <End Role="Chemist" Type="Self.Chemist" Multiplicity="1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chemist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicine">
+              <PropertyRef Name="chemistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_To_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_To_patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_ToDoctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_Topatient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recordlog_ToRecord">
+          <End Role="Record" Type="Self.Record" Multiplicity="1" />
+          <End Role="RecordAtlerLog" Type="Self.RecordAtlerLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecordAtlerLog">
+              <PropertyRef Name="RecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regestration date_ToTable">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Regestration date" Type="Self.Regestration date" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Regestration date">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Hospital Id">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="BloodBank" Type="Self.BloodBank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BloodBank">
+              <PropertyRef Name="Hospital Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="HospitalDbModel1StoreContainer">
+          <EntitySet Name="BloodBank" EntityType="Self.BloodBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChandedRecords" EntityType="Self.ChandedRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chemist" EntityType="Self.Chemist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalRoles" EntityType="Self.HospitalRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalUsers" EntityType="Self.HospitalUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medical_Stuff" EntityType="Self.Medical_Stuff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordAtlerLog" EntityType="Self.RecordAtlerLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regestration date" EntityType="Self.Regestration date" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChemistView" EntityType="Self.ChemistView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChemistView].[Id] AS [Id], 
+    [ChemistView].[Patient Name] AS [Patient Name], 
+    [ChemistView].[Current Prescription] AS [Current Prescription], 
+    [ChemistView].[Previous presciption] AS [Previous presciption], 
+    [ChemistView].[Date of Prescription] AS [Date of Prescription], 
+    [ChemistView].[Dr Name] AS [Dr Name]
+    FROM [dbo].[ChemistView] AS [ChemistView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Doctores_More_Details" EntityType="Self.Doctores_More_Details" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Doctores_More_Details].[Patient ID] AS [Patient ID], 
+    [Doctores_More_Details].[Patient name] AS [Patient name], 
+    [Doctores_More_Details].[Gender] AS [Gender], 
+    [Doctores_More_Details].[Age] AS [Age], 
+    [Doctores_More_Details].[Medical History] AS [Medical History], 
+    [Doctores_More_Details].[Other] AS [Other], 
+    [Doctores_More_Details].[Patient Diognosis] AS [Patient Diognosis], 
+    [Doctores_More_Details].[Current Prescription] AS [Current Prescription], 
+    [Doctores_More_Details].[Previous presciption] AS [Previous presciption], 
+    [Doctores_More_Details].[Dr name] AS [Dr name]
+    FROM [dbo].[Doctores_More_Details] AS [Doctores_More_Details]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DoctorsView" EntityType="Self.DoctorsView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DoctorsView].[Id] AS [Id], 
+    [DoctorsView].[FirstName] AS [FirstName], 
+    [DoctorsView].[SurName] AS [SurName], 
+    [DoctorsView].[Gender] AS [Gender], 
+    [DoctorsView].[Medical History] AS [Medical History], 
+    [DoctorsView].[Other] AS [Other]
+    FROM [dbo].[DoctorsView] AS [DoctorsView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HOSPITAL INFO" EntityType="Self.HOSPITAL INFO" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HOSPITAL INFO].[Name] AS [Name], 
+    [HOSPITAL INFO].[Location] AS [Location], 
+    [HOSPITAL INFO].[Attendant] AS [Attendant], 
+    [HOSPITAL INFO].[Blood type] AS [Blood type], 
+    [HOSPITAL INFO].[Quantity] AS [Quantity]
+    FROM [dbo].[HOSPITAL INFO] AS [HOSPITAL INFO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Nursesview" EntityType="Self.Nursesview" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Nursesview].[Id] AS [Id], 
+    [Nursesview].[FirstName] AS [FirstName], 
+    [Nursesview].[SurName] AS [SurName], 
+    [Nursesview].[DOB] AS [DOB], 
+    [Nursesview].[Gender] AS [Gender], 
+    [Nursesview].[Contact] AS [Contact], 
+    [Nursesview].[Box No] AS [Box No], 
+    [Nursesview].[Medical History] AS [Medical History], 
+    [Nursesview].[Other] AS [Other], 
+    [Nursesview].[Blood Type] AS [Blood Type], 
+    [Nursesview].[Insuarance Information] AS [Insuarance Information]
+    FROM [dbo].[Nursesview] AS [Nursesview]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View" EntityType="Self.View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View].[Name] AS [Name], 
+    [View].[Location] AS [Location], 
+    [View].[Attendant] AS [Attendant], 
+    [View].[Blood type] AS [Blood type], 
+    [View].[Quantity] AS [Quantity]
+    FROM [dbo].[View] AS [View]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__HospitalU__UserI__66EA454A" Association="Self.FK__HospitalU__UserI__66EA454A">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="HospitalUsers" EntitySet="HospitalUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Log__DoctorId__4AB81AF0" Association="Self.FK__Log__DoctorId__4AB81AF0">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Log__RecordId__49C3F6B7" Association="Self.FK__Log__RecordId__49C3F6B7">
+            <End Role="Record" EntitySet="Record" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Login__UserID__10E07F16" Association="Self.FK__Login__UserID__10E07F16">
+            <End Role="Chemist" EntitySet="Chemist" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Login__UserID__4CA06362" Association="Self.FK__Login__UserID__4CA06362">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRoles__RoleI__5A846E65" Association="Self.FK__UserRoles__RoleI__5A846E65">
+            <End Role="HospitalRoles" EntitySet="HospitalRoles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRoles__UserI__59904A2C" Association="Self.FK__UserRoles__UserI__59904A2C">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChandedRecords_ToRecord" Association="Self.FK_ChandedRecords_ToRecord">
+            <End Role="Record" EntitySet="Record" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChangedRecord_ToHospital" Association="Self.FK_ChangedRecord_ToHospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chemist_ToMedical_Stuff" Association="Self.FK_Chemist_ToMedical_Stuff">
+            <End Role="Medical_Stuff" EntitySet="Medical_Stuff" />
+            <End Role="Chemist" EntitySet="Chemist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_ToHospital" Association="Self.FK_Doctor_ToHospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hospital_ToDoctors" Association="Self.FK_Hospital_ToDoctors">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Hospital" EntitySet="Hospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Stuff_ToHospital" Association="Self.FK_Medical_Stuff_ToHospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Medical_Stuff" EntitySet="Medical_Stuff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medicine_ToChemist" Association="Self.FK_medicine_ToChemist">
+            <End Role="Chemist" EntitySet="Chemist" />
+            <End Role="Medicine" EntitySet="Medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_To_Doctor" Association="Self.FK_Record_To_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_To_patient" Association="Self.FK_Record_To_patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_ToDoctor" Association="Self.FK_Record_ToDoctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_ToHospital" Association="Self.FK_Record_ToHospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Topatient" Association="Self.FK_Record_Topatient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recordlog_ToRecord" Association="Self.FK_Recordlog_ToRecord">
+            <End Role="Record" EntitySet="Record" />
+            <End Role="RecordAtlerLog" EntitySet="RecordAtlerLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regestration date_ToTable" Association="Self.FK_Regestration date_ToTable">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Regestration date" EntitySet="Regestration date" />
+          </AssociationSet>
+          <AssociationSet Name="Hospital Id" Association="Self.Hospital Id">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="BloodBank" EntitySet="BloodBank" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalDbModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BloodBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Blood_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="Hospital_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hospital" Relationship="Self.Hospital_Id" FromRole="BloodBank" ToRole="Hospital" />
+        </EntityType>
+        <EntityType Name="ChandedRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="Patient_Diognosis" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Current_Prescription" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Previous_presciption" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_Prescription" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hospital_ID" Type="Int32" />
+          <NavigationProperty Name="Record" Relationship="Self.FK_ChandedRecords_ToRecord" FromRole="ChandedRecords" ToRole="Record" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_ChangedRecord_ToHospital" FromRole="ChandedRecords" ToRole="Hospital" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Record_ToDoctor" FromRole="ChandedRecords" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Record_Topatient" FromRole="ChandedRecords" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Chemist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Attendant" Type="Int32" />
+          <Property Name="Clearance" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Logins" Relationship="Self.FK__Login__UserID__10E07F16" FromRole="Chemist" ToRole="Login" />
+          <NavigationProperty Name="Medical_Stuff" Relationship="Self.FK_Chemist_ToMedical_Stuff" FromRole="Chemist" ToRole="Medical_Stuff" />
+          <NavigationProperty Name="Medicines" Relationship="Self.FK_medicine_ToChemist" FromRole="Chemist" ToRole="Medicine" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Practice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Room_NO" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Contact" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Hospital_ID" Type="Int32" />
+          <NavigationProperty Name="ChandedRecords" Relationship="Self.FK_Record_ToDoctor" FromRole="Doctor" ToRole="ChandedRecords" />
+          <NavigationProperty Name="HospitalUsers" Relationship="Self.FK__HospitalU__UserI__66EA454A" FromRole="Doctor" ToRole="HospitalUsers" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK__Log__DoctorId__4AB81AF0" FromRole="Doctor" ToRole="Log" />
+          <NavigationProperty Name="Logins" Relationship="Self.FK__Login__UserID__4CA06362" FromRole="Doctor" ToRole="Login" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_Doctor_ToHospital" FromRole="Doctor" ToRole="Hospital" />
+          <NavigationProperty Name="Hospitals" Relationship="Self.FK_Hospital_ToDoctors" FromRole="Doctor" ToRole="Hospital" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Record_To_Doctor" FromRole="Doctor" ToRole="Record" />
+          <NavigationProperty Name="HospitalRoles" Relationship="Self.UserRoles" FromRole="Doctor" ToRole="HospitalRoles" />
+          <Property Name="USER_IDNO" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Attendant" Type="Int32" />
+          <NavigationProperty Name="BloodBanks" Relationship="Self.Hospital_Id" FromRole="Hospital" ToRole="BloodBank" />
+          <NavigationProperty Name="ChandedRecords" Relationship="Self.FK_ChangedRecord_ToHospital" FromRole="Hospital" ToRole="ChandedRecords" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctor_ToHospital" FromRole="Hospital" ToRole="Doctor" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Hospital_ToDoctors" FromRole="Hospital" ToRole="Doctor" />
+          <NavigationProperty Name="Medical_Stuff" Relationship="Self.FK_Medical_Stuff_ToHospital" FromRole="Hospital" ToRole="Medical_Stuff" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Record_ToHospital" FromRole="Hospital" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="HospitalRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.UserRoles" FromRole="HospitalRoles" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="HospitalUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__HospitalU__UserI__66EA454A" FromRole="HospitalUsers" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Log__DoctorId__4AB81AF0" FromRole="Log" ToRole="Doctor" />
+          <NavigationProperty Name="Record" Relationship="Self.FK__Log__RecordId__49C3F6B7" FromRole="Log" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Chemist" Relationship="Self.FK__Login__UserID__10E07F16" FromRole="Login" ToRole="Chemist" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Login__UserID__4CA06362" FromRole="Login" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="Medical_Stuff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contact" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Qualifications" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Hospital_ID" Type="Int32" />
+          <NavigationProperty Name="Chemists" Relationship="Self.FK_Chemist_ToMedical_Stuff" FromRole="Medical_Stuff" ToRole="Chemist" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_Medical_Stuff_ToHospital" FromRole="Medical_Stuff" ToRole="Hospital" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="chemistId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Chemist" Relationship="Self.FK_medicine_ToChemist" FromRole="Medicine" ToRole="Chemist" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact" Type="Int32" Nullable="false" />
+          <Property Name="Box_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Medical_History" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Other" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Blood_Type" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Insuarance_Information" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChandedRecords" Relationship="Self.FK_Record_Topatient" FromRole="Patient" ToRole="ChandedRecords" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Record_To_patient" FromRole="Patient" ToRole="Record" />
+          <NavigationProperty Name="Regestration_date" Relationship="Self.FK_Regestration_date_ToTable" FromRole="Patient" ToRole="Regestration_date" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="Patient_Diognosis" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Current_Prescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Previous_presciption" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Prescription" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hospital_ID" Type="Int32" />
+          <NavigationProperty Name="ChandedRecords" Relationship="Self.FK_ChandedRecords_ToRecord" FromRole="Record" ToRole="ChandedRecords" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Record_To_Doctor" FromRole="Record" ToRole="Doctor" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_Record_ToHospital" FromRole="Record" ToRole="Hospital" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK__Log__RecordId__49C3F6B7" FromRole="Record" ToRole="Log" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Record_To_patient" FromRole="Record" ToRole="Patient" />
+          <NavigationProperty Name="RecordAtlerLogs" Relationship="Self.FK_Recordlog_ToRecord" FromRole="Record" ToRole="RecordAtlerLog" />
+        </EntityType>
+        <EntityType Name="RecordAtlerLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Record" Relationship="Self.FK_Recordlog_ToRecord" FromRole="RecordAtlerLog" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="Regestration_date">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="Regestration_date1" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Regestration_date_ToTable" FromRole="Regestration_date" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="ChemistView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Patient_Name" />
+            <PropertyRef Name="Current_Prescription" />
+            <PropertyRef Name="Previous_presciption" />
+            <PropertyRef Name="Date_of_Prescription" />
+            <PropertyRef Name="Dr_Name" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Patient_Name" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Current_Prescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Previous_presciption" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_of_Prescription" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Dr_Name" Type="String" MaxLength="101" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctores_More_Details">
+          <Key>
+            <PropertyRef Name="Patient_ID" />
+            <PropertyRef Name="Patient_name" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Patient_Diognosis" />
+            <PropertyRef Name="Current_Prescription" />
+            <PropertyRef Name="Previous_presciption" />
+            <PropertyRef Name="Dr_name" />
+          </Key>
+          <Property Name="Patient_ID" Type="Int32" Nullable="false" />
+          <Property Name="Patient_name" Type="String" MaxLength="101" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Medical_History" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Patient_Diognosis" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Current_Prescription" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Previous_presciption" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Dr_name" Type="String" MaxLength="101" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DoctorsView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="SurName" />
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Medical_History" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HOSPITAL_INFO">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Location" />
+            <PropertyRef Name="Blood_type" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Attendant" Type="Int32" />
+          <Property Name="Blood_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nursesview">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="SurName" />
+            <PropertyRef Name="DOB" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Contact" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Contact" Type="Int32" Nullable="false" />
+          <Property Name="Box_No" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Medical_History" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Blood_Type" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Insuarance_Information" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Location" />
+            <PropertyRef Name="Blood_type" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Attendant" Type="Int32" />
+          <Property Name="Blood_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="Hospital_Id">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="BloodBank" Type="Self.BloodBank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BloodBank">
+              <PropertyRef Name="Hospital_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChandedRecords_ToRecord">
+          <End Role="Record" Type="Self.Record" Multiplicity="1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="RecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChangedRecord_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_ToDoctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_Topatient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="ChandedRecords" Type="Self.ChandedRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChandedRecords">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Login__UserID__10E07F16">
+          <End Role="Chemist" Type="Self.Chemist" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chemist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chemist_ToMedical_Stuff">
+          <End Role="Medical_Stuff" Type="Self.Medical_Stuff" Multiplicity="0..1" />
+          <End Role="Chemist" Type="Self.Chemist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Stuff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Chemist">
+              <PropertyRef Name="Attendant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medicine_ToChemist">
+          <End Role="Chemist" Type="Self.Chemist" Multiplicity="1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chemist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicine">
+              <PropertyRef Name="chemistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HospitalU__UserI__66EA454A">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="HospitalUsers" Type="Self.HospitalUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HospitalUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Log__DoctorId__4AB81AF0">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Login__UserID__4CA06362">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hospital_ToDoctors">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hospital">
+              <PropertyRef Name="Attendant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_To_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Stuff_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="Medical_Stuff" Type="Self.Medical_Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medical_Stuff">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_ToHospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="Hospital_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Log__RecordId__49C3F6B7">
+          <End Role="Record" Type="Self.Record" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="RecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_To_patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regestration_date_ToTable">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Regestration_date" Type="Self.Regestration_date" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Regestration_date">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recordlog_ToRecord">
+          <End Role="Record" Type="Self.Record" Multiplicity="1" />
+          <End Role="RecordAtlerLog" Type="Self.RecordAtlerLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecordAtlerLog">
+              <PropertyRef Name="RecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRoles">
+          <End Role="HospitalRoles" Type="Self.HospitalRole" Multiplicity="*" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HospitalDbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BloodBanks" EntityType="Self.BloodBank" />
+          <EntitySet Name="ChandedRecords" EntityType="Self.ChandedRecord" />
+          <EntitySet Name="Chemists" EntityType="Self.Chemist" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+          <EntitySet Name="HospitalRoles" EntityType="Self.HospitalRole" />
+          <EntitySet Name="HospitalUsers" EntityType="Self.HospitalUser" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Medical_Stuff" EntityType="Self.Medical_Stuff" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Records" EntityType="Self.Record" />
+          <EntitySet Name="RecordAtlerLogs" EntityType="Self.RecordAtlerLog" />
+          <EntitySet Name="Regestration_dates" EntityType="Self.Regestration_date" />
+          <EntitySet Name="ChemistViews" EntityType="Self.ChemistView" />
+          <EntitySet Name="Doctores_More_Details" EntityType="Self.Doctores_More_Details" />
+          <EntitySet Name="DoctorsViews" EntityType="Self.DoctorsView" />
+          <EntitySet Name="HOSPITAL_INFOes" EntityType="Self.HOSPITAL_INFO" />
+          <EntitySet Name="Nursesviews" EntityType="Self.Nursesview" />
+          <EntitySet Name="Views" EntityType="Self.View" />
+          <AssociationSet Name="Hospital_Id" Association="Self.Hospital_Id">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="BloodBank" EntitySet="BloodBanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChandedRecords_ToRecord" Association="Self.FK_ChandedRecords_ToRecord">
+            <End Role="Record" EntitySet="Records" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChangedRecord_ToHospital" Association="Self.FK_ChangedRecord_ToHospital">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_ToDoctor" Association="Self.FK_Record_ToDoctor">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Topatient" Association="Self.FK_Record_Topatient">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="ChandedRecords" EntitySet="ChandedRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Login__UserID__10E07F16" Association="Self.FK__Login__UserID__10E07F16">
+            <End Role="Chemist" EntitySet="Chemists" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chemist_ToMedical_Stuff" Association="Self.FK_Chemist_ToMedical_Stuff">
+            <End Role="Medical_Stuff" EntitySet="Medical_Stuff" />
+            <End Role="Chemist" EntitySet="Chemists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medicine_ToChemist" Association="Self.FK_medicine_ToChemist">
+            <End Role="Chemist" EntitySet="Chemists" />
+            <End Role="Medicine" EntitySet="Medicines" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HospitalU__UserI__66EA454A" Association="Self.FK__HospitalU__UserI__66EA454A">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="HospitalUsers" EntitySet="HospitalUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Log__DoctorId__4AB81AF0" Association="Self.FK__Log__DoctorId__4AB81AF0">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Login__UserID__4CA06362" Association="Self.FK__Login__UserID__4CA06362">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_ToHospital" Association="Self.FK_Doctor_ToHospital">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hospital_ToDoctors" Association="Self.FK_Hospital_ToDoctors">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Hospital" EntitySet="Hospitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_To_Doctor" Association="Self.FK_Record_To_Doctor">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Stuff_ToHospital" Association="Self.FK_Medical_Stuff_ToHospital">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="Medical_Stuff" EntitySet="Medical_Stuff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_ToHospital" Association="Self.FK_Record_ToHospital">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Log__RecordId__49C3F6B7" Association="Self.FK__Log__RecordId__49C3F6B7">
+            <End Role="Record" EntitySet="Records" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_To_patient" Association="Self.FK_Record_To_patient">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regestration_date_ToTable" Association="Self.FK_Regestration_date_ToTable">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Regestration_date" EntitySet="Regestration_dates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recordlog_ToRecord" Association="Self.FK_Recordlog_ToRecord">
+            <End Role="Record" EntitySet="Records" />
+            <End Role="RecordAtlerLog" EntitySet="RecordAtlerLogs" />
+          </AssociationSet>
+          <AssociationSet Name="UserRoles" Association="Self.UserRoles">
+            <End Role="HospitalRoles" EntitySet="HospitalRoles" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <FunctionImport Name="Search" ReturnType="Collection(HospitalDbModel1.Search_Result)">
+          <Parameter Name="param1" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Search_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SurName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="Contact" Nullable="false" />
+          <Property Type="String" Name="Box_No" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Medical_History" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Other" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Blood_Type" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Insuarance_Information" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalDbModel1StoreContainer" CdmEntityContainer="HospitalDbEntities1">
+          <EntitySetMapping Name="BloodBanks">
+            <EntityTypeMapping TypeName="HospitalDbModel1.BloodBank">
+              <MappingFragment StoreEntitySet="BloodBank">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Blood_type" ColumnName="Blood type" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Hospital_Id" ColumnName="Hospital Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChandedRecords">
+            <EntityTypeMapping TypeName="HospitalDbModel1.ChandedRecord">
+              <MappingFragment StoreEntitySet="ChandedRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Patient_Diognosis" ColumnName="Patient Diognosis" />
+                <ScalarProperty Name="Current_Prescription" ColumnName="Current Prescription" />
+                <ScalarProperty Name="Previous_presciption" ColumnName="Previous presciption" />
+                <ScalarProperty Name="Date_of_Prescription" ColumnName="Date of Prescription" />
+                <ScalarProperty Name="Hospital_ID" ColumnName="Hospital_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chemists">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Chemist">
+              <MappingFragment StoreEntitySet="Chemist">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Attendant" ColumnName="Attendant" />
+                <ScalarProperty Name="Clearance" ColumnName="Clearance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="USER_IDNO" ColumnName="USER_IDNO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Practice" ColumnName="Practice" />
+                <ScalarProperty Name="Room_NO" ColumnName="Room NO" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Hospital_ID" ColumnName="Hospital_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospitals">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Hospital">
+              <MappingFragment StoreEntitySet="Hospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Attendant" ColumnName="Attendant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalRoles">
+            <EntityTypeMapping TypeName="HospitalDbModel1.HospitalRole">
+              <MappingFragment StoreEntitySet="HospitalRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalUsers">
+            <EntityTypeMapping TypeName="HospitalDbModel1.HospitalUser">
+              <MappingFragment StoreEntitySet="HospitalUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medical_Stuff">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Medical_Stuff">
+              <MappingFragment StoreEntitySet="Medical_Stuff">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="Hospital_ID" ColumnName="Hospital_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Medicine">
+              <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="chemistId" ColumnName="chemistId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Box_No" ColumnName="Box No" />
+                <ScalarProperty Name="Medical_History" ColumnName="Medical History" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="Blood_Type" ColumnName="Blood Type" />
+                <ScalarProperty Name="Insuarance_Information" ColumnName="Insuarance Information" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Record">
+              <MappingFragment StoreEntitySet="Record">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Patient_Diognosis" ColumnName="Patient Diognosis" />
+                <ScalarProperty Name="Current_Prescription" ColumnName="Current Prescription" />
+                <ScalarProperty Name="Previous_presciption" ColumnName="Previous presciption" />
+                <ScalarProperty Name="Date_of_Prescription" ColumnName="Date of Prescription" />
+                <ScalarProperty Name="Hospital_ID" ColumnName="Hospital_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordAtlerLogs">
+            <EntityTypeMapping TypeName="HospitalDbModel1.RecordAtlerLog">
+              <MappingFragment StoreEntitySet="RecordAtlerLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regestration_dates">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Regestration_date">
+              <MappingFragment StoreEntitySet="Regestration date">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Regestration_date1" ColumnName="Regestration date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChemistViews">
+            <EntityTypeMapping TypeName="HospitalDbModel1.ChemistView">
+              <MappingFragment StoreEntitySet="ChemistView">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Patient_Name" ColumnName="Patient Name" />
+                <ScalarProperty Name="Current_Prescription" ColumnName="Current Prescription" />
+                <ScalarProperty Name="Previous_presciption" ColumnName="Previous presciption" />
+                <ScalarProperty Name="Date_of_Prescription" ColumnName="Date of Prescription" />
+                <ScalarProperty Name="Dr_Name" ColumnName="Dr Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctores_More_Details">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Doctores_More_Details">
+              <MappingFragment StoreEntitySet="Doctores_More_Details">
+                <ScalarProperty Name="Patient_ID" ColumnName="Patient ID" />
+                <ScalarProperty Name="Patient_name" ColumnName="Patient name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Medical_History" ColumnName="Medical History" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="Patient_Diognosis" ColumnName="Patient Diognosis" />
+                <ScalarProperty Name="Current_Prescription" ColumnName="Current Prescription" />
+                <ScalarProperty Name="Previous_presciption" ColumnName="Previous presciption" />
+                <ScalarProperty Name="Dr_name" ColumnName="Dr name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorsViews">
+            <EntityTypeMapping TypeName="HospitalDbModel1.DoctorsView">
+              <MappingFragment StoreEntitySet="DoctorsView">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Medical_History" ColumnName="Medical History" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOSPITAL_INFOes">
+            <EntityTypeMapping TypeName="HospitalDbModel1.HOSPITAL_INFO">
+              <MappingFragment StoreEntitySet="HOSPITAL INFO">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Attendant" ColumnName="Attendant" />
+                <ScalarProperty Name="Blood_type" ColumnName="Blood type" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nursesviews">
+            <EntityTypeMapping TypeName="HospitalDbModel1.Nursesview">
+              <MappingFragment StoreEntitySet="Nursesview">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Box_No" ColumnName="Box No" />
+                <ScalarProperty Name="Medical_History" ColumnName="Medical History" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="Blood_Type" ColumnName="Blood Type" />
+                <ScalarProperty Name="Insuarance_Information" ColumnName="Insuarance Information" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Views">
+            <EntityTypeMapping TypeName="HospitalDbModel1.View">
+              <MappingFragment StoreEntitySet="View">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Attendant" ColumnName="Attendant" />
+                <ScalarProperty Name="Blood_type" ColumnName="Blood type" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserRoles" TypeName="HospitalDbModel1.UserRoles" StoreEntitySet="UserRoles">
+            <EndProperty Name="HospitalRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="Doctor">
+              <ScalarProperty Name="Id" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Search" FunctionName="HospitalDbModel1.Store.Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalDbModel1.Search_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Box_No" ColumnName="Box No" />
+                <ScalarProperty Name="Medical_History" ColumnName="Medical History" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="Blood_Type" ColumnName="Blood Type" />
+                <ScalarProperty Name="Insuarance_Information" ColumnName="Insuarance Information" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

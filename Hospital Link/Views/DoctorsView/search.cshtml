@@ -1,0 +1,91 @@
+﻿@model Hospital_Link.Models.Doctores_More_Details
+
+@{
+    ViewBag.Title = "search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Results</h2>
+
+<div>
+    <h4>Patient Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medical_History)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medical_History)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Other)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Other)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Diognosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Diognosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Current_Prescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Current_Prescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Previous_presciption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Previous_presciption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dr_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dr_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Patient_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
