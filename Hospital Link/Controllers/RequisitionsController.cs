@@ -41,6 +41,7 @@ namespace Hospital_Link.Controllers
 
             ViewBag.BloodGroup_A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Quantity).DefaultIfEmpty().First();
             var A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Id).First();
+            ViewBag.IDA = A;
             ViewBag.BloodGroup_B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Quantity).DefaultIfEmpty().First();
             var B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Id).First();
 
@@ -59,20 +60,59 @@ namespace Hospital_Link.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Requisition([Bind(Include = "Quantity,Quantity,Quantity,Quantity,Quantity ")] BloodBank bloodbank)
+        public ActionResult Requisition([Bind(Include = "Id,Blood_type,Quantity,Hospital_Id ")] BloodBank bloodbank)
         {
             if (ModelState.IsValid)
             {
-                RequisitionController Moto = new RequisitionController();
-                var UserId = User.Identity.GetUserId().ToString();
-                var Hospital = db.Doctors.Where(i => i.USER_IDNO.ToString() == UserId).Select(i => i.Hospital_ID).First();
+                //RequisitionController Moto = new RequisitionController();
+                //var UserId = User.Identity.GetUserId().ToString();
+                //var Hospital = db.Doctors.Where(i => i.USER_IDNO.ToString() == UserId).Select(i => i.Hospital_ID).First();
 
 
-                var Blood_amount = Moto.BlodeBank(Hospital);
+                //var Blood_amount = Moto.BlodeBank(Hospital);
+                //var A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Id).First();
+                //var B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Id).First();
+                //var AB = Blood_amount.Where(a => a.Blood_type == "AB").Select(a => a.Id).First();
+                //var O_negative = Blood_amount.Where(a => a.Blood_type == "O-").Select(a => a.Id).DefaultIfEmpty().First();
+                //var O_positive = Blood_amount.Where(a => a.Blood_type == "O+").Select(a => a.Id).DefaultIfEmpty().First();
+
               
-                return RedirectToAction("Requisitions");
+                    try
+                    {
+
+                    // or check on FirstName and LastName if you don't have a user id
+                    //var updatedUser = db.BloodBanks.SingleOrDefault(x => x.Id == A);
+
+                    //updatedUser.Quantity = quanity.Quantity;
+                    
+
+                   
+                    db.Entry(bloodbank).State = EntityState.Modified;
+                        db.SaveChanges();
+
+
+
+
+
+                        ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    catch (System.Data.Entity.Validation.DbEntityValidationException e)
+                    {
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        }
+                    }
+                
+
+                return RedirectToAction("index","Home");
             }
-            return View();
+            return new HttpNotFoundResult();
+            
         }
         public ActionResult Blood()
         {

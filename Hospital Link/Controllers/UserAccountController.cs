@@ -33,18 +33,29 @@ namespace Hospital_Link.Controllers
         public ActionResult Regester([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Hospital_ID,USER_IDNO")]Doctor user)
         {
             //VerifyID(user.UserID);
-
+            
                 if (ModelState.IsValid) {
-
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-              
-
-
+                try
+                {
+                    db.Entry(user ).State = EntityState.Modified;
+                    db.SaveChanges();
 
 
-                ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
-                return RedirectToAction("Index");
+
+
+
+                    ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+                    return RedirectToAction("Index", "Home");
+                }
+                catch(System.Data.Entity.Validation.DbEntityValidationException e)
+                {
+                    foreach(var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    }
+                }
             }
 
 
