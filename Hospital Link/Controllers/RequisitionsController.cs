@@ -36,31 +36,31 @@ namespace Hospital_Link.Controllers
             var UserId = User.Identity.GetUserId().ToString();
             var Hospital = db.Doctors.Where(i => i.USER_IDNO.ToString() == UserId).Select(i => i.Hospital_ID).First();
 
-
+            ViewBag.HospitalID = Hospital;
             var Blood_amount = Moto.BlodeBank(Hospital);
 
             ViewBag.BloodGroup_A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Quantity).DefaultIfEmpty().First();
-            var A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Id).First();
+            var A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Id).DefaultIfEmpty().First();
             ViewBag.IDA = A;
             ViewBag.BloodGroup_B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Quantity).DefaultIfEmpty().First();
-            var B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Id).First();
-
+            var B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Id).DefaultIfEmpty().First();
+            ViewBag.IDB = B;
             ViewBag.BloodGroup_AB = Blood_amount.Where(a => a.Blood_type == "AB").Select(a => a.Quantity).DefaultIfEmpty().First();
-            var AB = Blood_amount.Where(a => a.Blood_type == "AB").Select(a => a.Id).First();
-
+            var AB = Blood_amount.Where(a => a.Blood_type == "AB").Select(a => a.Id).DefaultIfEmpty().First();
+            ViewBag.IDAB = AB;
             ViewBag.BloodGroup_O_Negative = Blood_amount.Where(a => a.Blood_type == "O-").Select(a => a.Quantity).DefaultIfEmpty().First();
-            //var O_negative = Blood_amount.Where(a => a.Blood_type == "O-").Select(a => a.Id).First();
-
+            var O_negative = Blood_amount.Where(a => a.Blood_type == "O-").Select(a => a.Id).DefaultIfEmpty().First();
+            ViewBag.IDON = O_negative;
             ViewBag.BloodGroup_O_Positive = Blood_amount.Where(a => a.Blood_type == "O+").Select(a => a.Quantity).DefaultIfEmpty().First();
-           // var O_positive = Blood_amount.Where(a => a.Blood_type == "0+").Select(a => a.Id).First();
-
+             var O_positive = Blood_amount.Where(a => a.Blood_type == "0+").Select(a => a.Id).DefaultIfEmpty().First();
+            ViewBag.IDOP = O_positive;
 
 
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Requisition([Bind(Include = "Id,Blood_type,Quantity,Hospital_Id ")] BloodBank bloodbank)
+        public ActionResult Requisition(List<BloodBank> list)
         {
             if (ModelState.IsValid)
             {
@@ -87,14 +87,14 @@ namespace Hospital_Link.Controllers
                     
 
                    
-                    db.Entry(bloodbank).State = EntityState.Modified;
+                    db.Entry(list).State = EntityState.Modified;
                         db.SaveChanges();
 
 
 
 
 
-                        ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+                        //ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
 
                         return RedirectToAction("Index", "Home");
                     }

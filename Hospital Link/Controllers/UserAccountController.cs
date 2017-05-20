@@ -61,43 +61,38 @@ namespace Hospital_Link.Controllers
 
             return View();
         }
-        public ActionResult VerifyID(int? id)
+        
+        public ActionResult VerifyID(int? id,string role)
         {
             if (id == null)
             {
                 new HttpNotFoundResult("Enter Id");
             }
-            Doctor doctor = db.Doctors.Find(id);
-            if (doctor == null)
-            {
-                TempData["ErrorMessage1"] = "DOCTOR NOT FOUND";
+          
+                Doctor doctor = db.Doctors.Find(id);
+                if (doctor == null)
+                {
+                    TempData["ErrorMessage1"] = "DOCTOR NOT FOUND";
 
-            }
+                }
 
-            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
-            ViewBag.UserID = User.Identity.GetUserId();
+                ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+                ViewBag.UserID = User.Identity.GetUserId();
+                return View("Regester", doctor);
+           
+          
            // ViewBag.Name = isvalid.SurName.ToString();
 
-            return View("Regester",doctor);
+           
 
         }
-        //[HttpPost]
-        //public ActionResult VerifyID( Doctor doctor)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        db.Doctors.Add(doctor);
-        //        db.SaveChanges();
-
-        //    }
+       public ActionResult AssignRole()
+        {
 
 
-        //    ViewBag.UserID = new SelectList(db.Doctors, "Id", "Id");
-        //    ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
 
-        //    return View();
-        //}
+            return View();
+        }
 
         public ActionResult Login()
         {
