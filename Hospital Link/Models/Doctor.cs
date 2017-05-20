@@ -35,6 +35,7 @@ namespace Hospital_Link.Models
         public string Email { get; set; }
         public Nullable<int> Hospital_ID { get; set; }
         public string USER_IDNO { get; set; }
+        public string Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChandedRecord> ChandedRecords { get; set; }

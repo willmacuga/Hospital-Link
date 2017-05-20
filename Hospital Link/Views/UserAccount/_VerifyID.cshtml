@@ -72,10 +72,18 @@
                     <div class="col-sm-6 form-group">
                         <label>User ID</label>
                         @Html.EditorFor(model => model.USER_IDNO, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.USER_IDNO, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.USER_IDNO, "", new { @class = "text-danger", @Value = @ViewBag.UserID })
 
                         @* <input type="text" placeholder="Enter ID Here.." class="form-control">*@
                     </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Role</label>
+                        @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+
+                        @* <input type="text" placeholder="Enter ID Here.." class="form-control">*@
+                    </div>
+
                     <input type="submit" value="UpDate" class="btn btn-default" />
                 </div>
             </form>

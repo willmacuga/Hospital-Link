@@ -7,12 +7,35 @@ using Hospital_Link.Models;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 
 namespace Hospital_Link.Controllers
 {
     public class UserAccountController : Controller
     {
         HospitalDbEntities1 db = new HospitalDbEntities1();
+        private ApplicationUserManager _userManager;
+        public UserAccountController()
+        {
+        }
+        public UserAccountController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+           
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: UserAccount
         public ActionResult Index()
@@ -21,16 +44,18 @@ namespace Hospital_Link.Controllers
         }
         public ActionResult Regester()
         {
-            
 
-                //ViewBag.UserID = new SelectList(db.Doctors, "Id", "Id");
+
+
+                 ViewBag.UserID = User.Identity.GetUserId();
             ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+
 
 
             return View();
         }
         [HttpPost]
-        public ActionResult Regester([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Hospital_ID,USER_IDNO")]Doctor user)
+        public ActionResult Regester([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Hospital_ID,USER_IDNO,Role")]Doctor user)
         {
             //VerifyID(user.UserID);
             
@@ -45,6 +70,7 @@ namespace Hospital_Link.Controllers
 
 
                     ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+                    AssignRole(user.Id);
                     return RedirectToAction("Index", "Home");
                 }
                 catch(System.Data.Entity.Validation.DbEntityValidationException e)
@@ -62,7 +88,7 @@ namespace Hospital_Link.Controllers
             return View();
         }
         
-        public ActionResult VerifyID(int? id,string role)
+        public ActionResult VerifyID(int? id)
         {
             if (id == null)
             {
@@ -86,10 +112,40 @@ namespace Hospital_Link.Controllers
            
 
         }
-       public ActionResult AssignRole()
+        
+        
+        public ActionResult AssignRole(int? id )
         {
+         
+            var role =  db.Doctors.Where(i => i.Id == id).Select(i => i.Role).First().ToString();
+            var userid = db.Doctors.Where(i => i.Id == id).Select(i => i.USER_IDNO).First();
+            if (id == null)
+            {
 
+            }
+           
+            if (role == "DoctorRole")
+            {
+               
+                    if (!Roles.RoleExists(role))
+                         Roles.CreateRole(role);
+                    if (!Roles.IsUserInRole(userid))
+                        Roles.AddUserToRole(userid, role);
+                    
+                   
+                
 
+    }
+            if (role == "NurseRole")
+            {
+
+               
+                    if (!Roles.RoleExists(role))
+                        Roles.CreateRole(role);
+                    if (!Roles.IsUserInRole(userid))
+                        Roles.AddUserToRole(userid, role);
+                
+            }
 
             return View();
         }

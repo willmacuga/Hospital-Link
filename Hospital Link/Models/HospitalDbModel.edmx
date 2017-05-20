@@ -53,7 +53,7 @@
           <Property Name="Email" Type="nchar" MaxLength="50" />
           <Property Name="Hospital_ID" Type="int" />
           <Property Name="USER_IDNO" Type="nvarchar" MaxLength="128" />
-          <Property Name="Role" Type="nvarchar" MaxLength="128" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
@@ -791,7 +791,7 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
           <NavigationProperty Name="Records" Relationship="Self.FK_Record_To_Doctor" FromRole="Doctor" ToRole="Record" />
           <NavigationProperty Name="HospitalRoles" Relationship="Self.UserRoles" FromRole="Doctor" ToRole="HospitalRoles" />
           <Property Name="USER_IDNO" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
