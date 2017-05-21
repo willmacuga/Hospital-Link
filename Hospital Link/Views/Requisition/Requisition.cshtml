@@ -3,22 +3,25 @@
     ViewBag.Title = "Requisition";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <h2>Requisition Form</h2>
-@using (Html.BeginForm())
-{
+<div id="BGForm">
+   @using (Ajax.BeginForm( new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "BGForm" }))
+
+   {
     @Html.AntiForgeryToken()
 
-    <div >
+    <div>
         @Html.Partial("_bloodgroupA", Model);
     </div>
-    <div >
+    <div>
         @Html.Partial("_bloodgroupB", Model);
     </div>
-    <div  >
+    <div>
         @Html.Partial("_bloodgroupAB", Model);
     </div>
-
+    
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
@@ -26,4 +29,7 @@
     </div>
 
 
-}
+    }
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>

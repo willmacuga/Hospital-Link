@@ -347,9 +347,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap_simplex.css" />
     <Content Include="Content\newTemplate\img\Blood\ab.jpg" />
-    <Content Include="Content\newTemplate\img\Blood\blood.jpg" />
-    <Content Include="Content\newTemplate\img\Blood\bloodno BG.jpg" />
-    <Content Include="Content\newTemplate\img\Blood\bloodno BG1.jpg" />
+    <Content Include="Content\newTemplate\img\Blood\blood1.jpg" />
     <Content Include="Content\newTemplate\img\Blood\happy.png" />
     <Content Include="Content\newTemplate\JavaScript.js" />
     <Content Include="favicon.ico" />
@@ -404,6 +402,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
