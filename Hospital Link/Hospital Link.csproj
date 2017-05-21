@@ -413,7 +413,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -500,6 +502,9 @@
     <Content Include="Views\Requisition\Blood.cshtml" />
     <Content Include="Views\UserAccount\_VerifyID.cshtml" />
     <Content Include="Views\UserAccount\Regester.cshtml" />
+    <Content Include="Views\Requisition\_bloodgroupA.cshtml" />
+    <Content Include="Views\Requisition\_bloodgroupB.cshtml" />
+    <Content Include="Views\Requisition\_bloodgroupAB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\newTemplate\css\" />

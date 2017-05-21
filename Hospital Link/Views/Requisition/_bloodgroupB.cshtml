@@ -1,0 +1,28 @@
+﻿
+@model Hospital_Link.Models.BloodBank
+@{
+    ViewBag.Title = "Requisition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Requisition Form</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id, new { id = "", Value = @ViewBag.IDB })
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Blood_type, new { Value = "B" })
+
+        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control     glyphicon-heart" } })
+        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Hospital_Id, new { id = "", Value = "@ViewBag.HospitalID" })
+
+        <input type="submit" value="submit" class="btn btn-default" />
+
+</div>
+}

@@ -15,39 +15,76 @@ namespace Hospital_Link.Controllers
     public class UserAccountController : Controller
     {
         HospitalDbEntities1 db = new HospitalDbEntities1();
-        private ApplicationUserManager _userManager;
-        public UserAccountController()
-        {
-        }
-        public UserAccountController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-           
-        }
+        //private readonly UserManager<ApplicationUser> _userManager;
+        //public UserAccountController()
+        //{
+        //}
+        //public UserAccountController(UserManager<ApplicationUser> userManager)
+        //{
+        //    _userManager = userManager;
 
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+        //}
+        //public ApplicationUserManager UserManager
+        //{
+        //    get
+        //    {
+        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        //    }
+        //    private set
+        //    {
+        //        _userManager = value;
+        //    }
+        //}
+       
+            private ApplicationSignInManager _signInManager;
+            private ApplicationUserManager _userManager;
 
-        // GET: UserAccount
-        public ActionResult Index()
+            public UserAccountController()
+            {
+            }
+
+            public UserAccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+            {
+                UserManager = userManager;
+                SignInManager = signInManager;
+            }
+
+            public ApplicationSignInManager SignInManager
+            {
+                get
+                {
+                    return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                }
+                private set
+                {
+                    _signInManager = value;
+                }
+            }
+
+            public ApplicationUserManager UserManager
+            {
+                get
+                {
+                    return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                }
+                private set
+                {
+                    _userManager = value;
+                }
+            }
+
+
+            // GET: UserAccount
+            public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Regester()
+        public ActionResult Regester(string userid)
         {
 
 
 
-                 ViewBag.UserID = User.Identity.GetUserId();
+                 ViewBag.UserID = userid;
             ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
 
 
@@ -70,8 +107,10 @@ namespace Hospital_Link.Controllers
 
 
                     ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+                 
                     AssignRole(user.Id);
-                    return RedirectToAction("Index", "Home");
+
+                    return RedirectToAction("Index","Home");
                 }
                 catch(System.Data.Entity.Validation.DbEntityValidationException e)
                 {
@@ -112,40 +151,20 @@ namespace Hospital_Link.Controllers
            
 
         }
-        
-        
-        public ActionResult AssignRole(int? id )
+
+
+        public ActionResult AssignRole(int? id)
         {
-         
-            var role =  db.Doctors.Where(i => i.Id == id).Select(i => i.Role).First().ToString();
+
+            var role = db.Doctors.Where(i => i.Id == id).Select(i => i.Role).First().ToString();
             var userid = db.Doctors.Where(i => i.Id == id).Select(i => i.USER_IDNO).First();
             if (id == null)
             {
 
             }
-           
-            if (role == "DoctorRole")
-            {
-               
-                    if (!Roles.RoleExists(role))
-                         Roles.CreateRole(role);
-                    if (!Roles.IsUserInRole(userid))
-                        Roles.AddUserToRole(userid, role);
-                    
-                   
-                
-
-    }
-            if (role == "NurseRole")
-            {
-
-               
-                    if (!Roles.RoleExists(role))
-                        Roles.CreateRole(role);
-                    if (!Roles.IsUserInRole(userid))
-                        Roles.AddUserToRole(userid, role);
-                
-            }
+            //2 days to figure this line out
+            UserManager.AddToRole(userid, role);
+           //************************************
 
             return View();
         }

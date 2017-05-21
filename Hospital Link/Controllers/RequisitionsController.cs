@@ -60,7 +60,7 @@ namespace Hospital_Link.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Requisition(List<BloodBank> list)
+        public ActionResult Requisition(BloodBank bloodbank)
         {
             if (ModelState.IsValid)
             {
@@ -87,16 +87,39 @@ namespace Hospital_Link.Controllers
                     
 
                    
-                    db.Entry(list).State = EntityState.Modified;
+                    db.Entry(bloodbank).State = EntityState.Modified;
                         db.SaveChanges();
 
+                    Boolean A=true;
+                    Boolean B=true;
+                    Boolean AB=true;
 
+                    if(bloodbank.Blood_type.Equals("A"))
+                    {
+                        A = false;
+                       
+                        
+                    }
+                    if (bloodbank.Blood_type.Equals("B"))
+                    {
+                        B = false;
+                        
+                    }
+                    if (bloodbank.Blood_type.Equals("AB"))
+                    {
+                        AB = false;
+                       
+                    }
+                    if(A==false)
+                        ViewBag.visibleA = "none";
+                    if(B==false)
+                        ViewBag.visibleB = "none";
+                    if(AB==false)
+                        ViewBag.visibleAB = "none";
 
+                    //ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
 
-
-                        //ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
-
-                        return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Requisition");
                     }
                     catch (System.Data.Entity.Validation.DbEntityValidationException e)
                     {

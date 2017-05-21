@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.WebPages.Html;
 
 namespace Hospital_Link.Models
 {
@@ -108,5 +109,12 @@ namespace Hospital_Link.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+    public  class AssignRoles
+    {
+        public string UserRoleName { get; set; }
+        public string UserID { get; set; }
+        public List <SelectListItem> UserList { get; set; }
+       public List <SelectListItem> UserRolesList { get; set; } 
     }
 }
