@@ -10,7 +10,7 @@ using Hospital_Link.Models;
 
 namespace Hospital_Link.Controllers
 {
-    [Authorize(Roles = "Administrator,Doctor,Nurse")]
+    [Authorize(Roles = "Administrator,DoctorRole,NurseRole")]
    
     public class PatientsController : Controller
     {
@@ -39,7 +39,12 @@ namespace Hospital_Link.Controllers
 
         // GET: Patients/Create
         public ActionResult Create()
-        {
+        { 
+             var gender = new SelectList(new[] { "NULL", "Male", "Female" });
+        ViewBag.Gender = gender;
+            var blood_type = new SelectList(new[] { "NULL", "A", "B", "AB", "O+", "O-" });
+        ViewBag.Blood_type = blood_type;
+            ViewBag.Date_leo = DateTime.Now;
             return View();
         }
 

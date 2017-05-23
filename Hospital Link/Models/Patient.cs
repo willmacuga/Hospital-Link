@@ -11,7 +11,8 @@ namespace Hospital_Link.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +26,7 @@ namespace Hospital_Link.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string SurName { get; set; }
+        //[DataType(DataType.Date)]
         public System.DateTime DOB { get; set; }
         public string Gender { get; set; }
         public int Contact { get; set; }

@@ -178,11 +178,11 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.Chem
         <EntityType Name="ChemistView">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Patient Name" />
-            <PropertyRef Name="Current Prescription" />
-            <PropertyRef Name="Previous presciption" />
-            <PropertyRef Name="Date of Prescription" />
-            <PropertyRef Name="Dr Name" />
+            
+            
+            
+            
+            
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Patient Name" Type="varchar" MaxLength="101" Nullable="false" />
@@ -196,12 +196,12 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.Doct
         <EntityType Name="Doctores_More_Details">
           <Key>
             <PropertyRef Name="Patient ID" />
-            <PropertyRef Name="Patient name" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="Patient Diognosis" />
-            <PropertyRef Name="Current Prescription" />
-            <PropertyRef Name="Previous presciption" />
-            <PropertyRef Name="Dr name" />
+            
+            
+            
+            
+            
+            
           </Key>
           <Property Name="Patient ID" Type="int" Nullable="false" />
           <Property Name="Patient name" Type="nvarchar" MaxLength="101" Nullable="false" />
@@ -219,9 +219,9 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.Doct
         <EntityType Name="DoctorsView">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="SurName" />
-            <PropertyRef Name="Gender" />
+            
+            
+            
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -235,9 +235,9 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.HOSP
         <EntityType Name="HOSPITAL INFO">
           <Key>
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Location" />
-            <PropertyRef Name="Blood type" />
-            <PropertyRef Name="Quantity" />
+            
+            
+            
           </Key>
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -250,11 +250,11 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.Nurs
         <EntityType Name="Nursesview">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="SurName" />
-            <PropertyRef Name="DOB" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="Contact" />
+            
+            
+            
+            
+            
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -273,9 +273,9 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="View">
           <Key>
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Location" />
-            <PropertyRef Name="Blood type" />
-            <PropertyRef Name="Quantity" />
+            
+            
+            
           </Key>
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -932,11 +932,6 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="ChemistView">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Patient_Name" />
-            <PropertyRef Name="Current_Prescription" />
-            <PropertyRef Name="Previous_presciption" />
-            <PropertyRef Name="Date_of_Prescription" />
-            <PropertyRef Name="Dr_Name" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Patient_Name" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
@@ -948,12 +943,6 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="Doctores_More_Details">
           <Key>
             <PropertyRef Name="Patient_ID" />
-            <PropertyRef Name="Patient_name" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="Patient_Diognosis" />
-            <PropertyRef Name="Current_Prescription" />
-            <PropertyRef Name="Previous_presciption" />
-            <PropertyRef Name="Dr_name" />
           </Key>
           <Property Name="Patient_ID" Type="Int32" Nullable="false" />
           <Property Name="Patient_name" Type="String" MaxLength="101" FixedLength="false" Unicode="true" Nullable="false" />
@@ -969,9 +958,6 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="DoctorsView">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="SurName" />
-            <PropertyRef Name="Gender" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -983,9 +969,6 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="HOSPITAL_INFO">
           <Key>
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Location" />
-            <PropertyRef Name="Blood_type" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -996,11 +979,6 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="Nursesview">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="SurName" />
-            <PropertyRef Name="DOB" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="Contact" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1017,9 +995,6 @@ warning 6002: The table/view 'C:\USERS\WILLAIM\DOCUMENTS\HOSPITALDB.MDF.dbo.View
         <EntityType Name="View">
           <Key>
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Location" />
-            <PropertyRef Name="Blood_type" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />

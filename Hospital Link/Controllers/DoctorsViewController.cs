@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Hospital_Link.Controllers
 {
-    [Authorize(Roles = "Administrator,Doctor,Manager")]
+    [Authorize(Roles = "Administrator,DoctorRole,Manager")]
 
     public class DoctorsViewController : Controller
     {

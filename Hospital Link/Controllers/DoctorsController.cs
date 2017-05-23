@@ -10,7 +10,7 @@ using Hospital_Link.Models;
 
 namespace Hospital_Link.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator,Manager")]
 
     public class DoctorsController : Controller
     {
@@ -41,6 +41,8 @@ namespace Hospital_Link.Controllers
         // GET: Doctors/Create
         public ActionResult Create()
         {
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "Id", "name");
+
             return View();
         }
 
@@ -49,7 +51,7 @@ namespace Hospital_Link.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Clearance")] Doctor doctor)
+        public ActionResult Create([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Hospital_ID,USER_IDNO,Role")] Doctor doctor)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +59,7 @@ namespace Hospital_Link.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "Id", "Name",doctor.Hospital_ID);
             return View(doctor);
         }
 
@@ -73,6 +75,7 @@ namespace Hospital_Link.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "Id", "Name", doctor.Hospital_ID);
             return View(doctor);
         }
 
@@ -81,7 +84,7 @@ namespace Hospital_Link.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Clearance")] Doctor doctor)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,SurName,Practice,Room_NO,Contact,Email,Hospital_ID,USER_IDNO,Role")] Doctor doctor)
         {
             if (ModelState.IsValid)
             {
@@ -89,6 +92,7 @@ namespace Hospital_Link.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "Id", "Name", doctor.Hospital_ID);
             return View(doctor);
         }
 

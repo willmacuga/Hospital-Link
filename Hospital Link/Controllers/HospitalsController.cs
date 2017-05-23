@@ -10,7 +10,7 @@ using Hospital_Link.Models;
 
 namespace Hospital_Link.Controllers
 {
-    [AccessDeniedAuthorizeAttribute(Roles = "Administrator,manager")]
+    [Authorize(Roles = "Administrator,manager")]
     
 
     public class HospitalsController : Controller
@@ -44,6 +44,8 @@ namespace Hospital_Link.Controllers
         {
         
             ViewBag.Attendant = new SelectList(db.Doctors, "Id", "FirstName");
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+
 
             return View();
         }
@@ -57,12 +59,14 @@ namespace Hospital_Link.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                BloodBank bloodbank;
                 db.Hospitals.Add(hospital);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.Attendant = new SelectList(db.Doctors, "Id", "FirstName", hospital.Attendant);
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
+
 
             return View(hospital);
         }
@@ -179,20 +183,35 @@ namespace Hospital_Link.Controllers
 
             return View();
         }
-    }
-    public class AccessDeniedAuthorizeAttribute : AuthorizeAttribute
-    {
-        public override void OnAuthorization(AuthorizationContext filterContext)
+        public ActionResult blood(BloodBank bloodbank)
         {
-            base.OnAuthorization(filterContext);
-
-            if (filterContext.Result is HttpUnauthorizedResult)
+            if(ModelState.IsValid)
             {
-               
-                filterContext.Result = new RedirectResult("~/Account/Login");
+                db.BloodBanks.Add(bloodbank);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
+         
+
+            ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name", bloodbank.Hospital_Id);
+            return View();
+
         }
+    }
+    //public class AccessDeniedAuthorizeAttribute : AuthorizeAttribute
+    //{
+    //    public override void OnAuthorization(AuthorizationContext filterContext)
+    //    {
+    //        base.OnAuthorization(filterContext);
+
+    //        if (filterContext.Result is HttpUnauthorizedResult)
+    //        {
+               
+    //            filterContext.Result = new RedirectResult("~/Account/Login");
+    //        }
+    //    }
        
 
-    }
+    
+   
 }

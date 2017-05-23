@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace Hospital_Link.Controllers
 {
-    [Authorize(Roles = "Administrator,manager")]
+    [Authorize]
     public class RequisitionController : Controller
     {
         private HospitalDbEntities1 db = new HospitalDbEntities1();
@@ -26,15 +26,15 @@ namespace Hospital_Link.Controllers
             //var BloodGroup_A = Blood_amount.Where(a => a.Blood_type == "A").Count();
 
 
-
+          
 
             return Blood_amount.AsQueryable();
         }
         public ActionResult Requisition(int? id)
         {
             RequisitionController Moto = new RequisitionController();
-            var UserId = User.Identity.GetUserId().ToString();
-            var Hospital = db.Doctors.Where(i => i.USER_IDNO.ToString() == UserId).Select(i => i.Hospital_ID).First();
+            var UserId = User.Identity.GetUserId();
+            var Hospital = db.Doctors.Where(i => i.USER_IDNO == UserId).Select(i => i.Hospital_ID).First();
 
             ViewBag.HospitalID = Hospital;
             var Blood_amount = Moto.BlodeBank(Hospital);
@@ -64,21 +64,43 @@ namespace Hospital_Link.Controllers
         {
             if (ModelState.IsValid)
             {
-                //RequisitionController Moto = new RequisitionController();
-                //var UserId = User.Identity.GetUserId().ToString();
-                //var Hospital = db.Doctors.Where(i => i.USER_IDNO.ToString() == UserId).Select(i => i.Hospital_ID).First();
+                
+
+                RequisitionController Moto = new RequisitionController();
+                var UserId = User.Identity.GetUserId().ToString();
+                var Hospital = db.Doctors.Where(i => i.USER_IDNO.ToString() == UserId).Select(i => i.Hospital_ID).First();
 
 
-                //var Blood_amount = Moto.BlodeBank(Hospital);
-                //var A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Id).First();
-                //var B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Id).First();
-                //var AB = Blood_amount.Where(a => a.Blood_type == "AB").Select(a => a.Id).First();
-                //var O_negative = Blood_amount.Where(a => a.Blood_type == "O-").Select(a => a.Id).DefaultIfEmpty().First();
-                //var O_positive = Blood_amount.Where(a => a.Blood_type == "O+").Select(a => a.Id).DefaultIfEmpty().First();
+                var Blood_amount = Moto.BlodeBank(Hospital);
+                var A = Blood_amount.Where(a => a.Blood_type == "A").Select(a => a.Quantity).DefaultIfEmpty().First();
+                var B = Blood_amount.Where(a => a.Blood_type == "B").Select(a => a.Quantity).DefaultIfEmpty().First();
+                var AB = Blood_amount.Where(a => a.Blood_type == "AB").Select(a => a.Quantity).DefaultIfEmpty().First();
+                var O_negative = Blood_amount.Where(a => a.Blood_type == "O-").Select(a => a.Quantity).DefaultIfEmpty().First();
+                var O_positive = Blood_amount.Where(a => a.Blood_type == "O+").Select(a => a.Quantity).DefaultIfEmpty().First();
+                //************************************************************
 
-              
-                    try
-                    {
+                if (bloodbank.Blood_type.Equals("A"))
+                {
+                    var amount = bloodbank.Quantity;
+                    var change = A - amount;
+                    bloodbank.Quantity = change;
+                }
+                if (bloodbank.Blood_type.Equals("B"))
+                {
+                    var amount = bloodbank.Quantity;
+                    var change = B - amount;
+                    bloodbank.Quantity = change;
+                }
+                if (bloodbank.Blood_type.Equals("AB"))
+                {
+                    var amount = bloodbank.Quantity;
+                    var change = AB - amount;
+                    bloodbank.Quantity = change;
+                }
+
+
+                try
+                {
 
                     // or check on FirstName and LastName if you don't have a user id
                     //var updatedUser = db.BloodBanks.SingleOrDefault(x => x.Id == A);
@@ -90,32 +112,32 @@ namespace Hospital_Link.Controllers
                     db.Entry(bloodbank).State = EntityState.Modified;
                         db.SaveChanges();
 
-                    Boolean A=true;
-                    Boolean B=true;
-                    Boolean AB=true;
+                    //Boolean A=true;
+                    //Boolean B=true;
+                    //Boolean AB=true;
 
-                    if(bloodbank.Blood_type.Equals("A"))
-                    {
-                        A = false;
+                    //if(bloodbank.Blood_type.Equals("A"))
+                    //{
+                    //    A = false;
                        
                         
-                    }
-                    if (bloodbank.Blood_type.Equals("B"))
-                    {
-                        B = false;
+                    //}
+                    //if (bloodbank.Blood_type.Equals("B"))
+                    //{
+                    //    B = false;
                         
-                    }
-                    if (bloodbank.Blood_type.Equals("AB"))
-                    {
-                        AB = false;
+                    //}
+                    //if (bloodbank.Blood_type.Equals("AB"))
+                    //{
+                    //    AB = false;
                        
-                    }
-                    if(A==false)
-                        ViewBag.visibleA = "none";
-                    if(B==false)
-                        ViewBag.visibleB = "none";
-                    if(AB==false)
-                        ViewBag.visibleAB = "none";
+                    //}
+                    //if(A==false)
+                    //    ViewBag.visibleA = "none";
+                    //if(B==false)
+                    //    ViewBag.visibleB = "none";
+                    //if(AB==false)
+                    //    ViewBag.visibleAB = "none";
 
                     //ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
 

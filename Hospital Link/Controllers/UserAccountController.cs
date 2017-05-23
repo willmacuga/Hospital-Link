@@ -84,7 +84,7 @@ namespace Hospital_Link.Controllers
 
 
 
-                 ViewBag.UserID = userid;
+            ViewBag.UserID = User.Identity.GetUserId();
             ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
 
 
@@ -105,7 +105,7 @@ namespace Hospital_Link.Controllers
 
 
 
-
+                    ViewBag.UserID = User.Identity.GetUserId();
                     ViewBag.Hospital_ID = new SelectList(db.Hospitals, "id", "Name");
                  
                     AssignRole(user.Id);

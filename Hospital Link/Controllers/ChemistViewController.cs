@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Hospital_Link.Controllers
 {
-    [Authorize(Roles ="Administrator,pharmasist")]
+    [Authorize(Roles ="Administrator,ChemistRole,Manager")]
     public class ChemistViewController : Controller
     {
         private HospitalDbEntities1 db = new HospitalDbEntities1();

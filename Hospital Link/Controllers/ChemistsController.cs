@@ -10,7 +10,7 @@ using Hospital_Link.Models;
 
 namespace Hospital_Link.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator, Manager ")]
 
     public class ChemistsController : Controller
     {

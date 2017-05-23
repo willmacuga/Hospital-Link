@@ -337,6 +337,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\BloodGoup.cs" />
+    <Compile Include="ViewModel\ChemistView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\HospitalDb.mdf" />
@@ -466,10 +467,6 @@
     <Content Include="Views\Chemists\Details.cshtml" />
     <Content Include="Views\Chemists\Edit.cshtml" />
     <Content Include="Views\Chemists\Index.cshtml" />
-    <Content Include="Views\ChemistView\Index.cshtml" />
-    <Content Include="Views\ChemistView\search.cshtml" />
-    <Content Include="Views\ChemistView\Details.cshtml" />
-    <Content Include="Views\ChemistView\Edit.cshtml" />
     <Content Include="Views\HospitalRoles\Create.cshtml" />
     <Content Include="Views\HospitalRoles\Delete.cshtml" />
     <Content Include="Views\HospitalRoles\Details.cshtml" />
@@ -505,6 +502,12 @@
     <Content Include="Views\Requisition\_bloodgroupA.cshtml" />
     <Content Include="Views\Requisition\_bloodgroupB.cshtml" />
     <Content Include="Views\Requisition\_bloodgroupAB.cshtml" />
+    <Content Include="Views\ChemistView\Index.cshtml" />
+    <Content Include="Views\ChemistView\Details.cshtml" />
+    <Content Include="Views\ChemistView\search.cshtml" />
+    <Content Include="Views\Hospitals\_bloodbank.cshtml" />
+    <Content Include="Views\Requisition\_bloodgroupO_negative.cshtml" />
+    <Content Include="Views\Requisition\_bloodgroupO_positive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\newTemplate\css\" />
