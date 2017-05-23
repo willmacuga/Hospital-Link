@@ -27,6 +27,7 @@ namespace Hospital_Link.Models
         public string FirstName { get; set; }
         public string SurName { get; set; }
         //[DataType(DataType.Date)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         public System.DateTime DOB { get; set; }
         public string Gender { get; set; }
         public int Contact { get; set; }

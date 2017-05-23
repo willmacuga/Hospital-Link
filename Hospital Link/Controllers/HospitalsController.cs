@@ -59,7 +59,7 @@ namespace Hospital_Link.Controllers
         {
             if (ModelState.IsValid)
             {
-                BloodBank bloodbank;
+               
                 db.Hospitals.Add(hospital);
                 db.SaveChanges();
                 return RedirectToAction("Index");

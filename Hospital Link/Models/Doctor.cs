@@ -11,7 +11,8 @@ namespace Hospital_Link.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Doctor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,6 +32,7 @@ namespace Hospital_Link.Models
         public string SurName { get; set; }
         public string Practice { get; set; }
         public string Room_NO { get; set; }
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         public int Contact { get; set; }
         public string Email { get; set; }
         public Nullable<int> Hospital_ID { get; set; }
